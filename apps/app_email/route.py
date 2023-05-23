@@ -25,8 +25,7 @@ def reset_password():
     }
     token = jwt.encode(payload, salt, algorithm='HS256')
     email_body = f"请点击链接进行密码重置, http://127.0.0.1:5000/email/{token}"
-    result = send_message(email_title, email_body, recipients=[user_email])
-    print(result)
+    send_message(email_title, email_body, recipients=[user_email])
     return str(email_body)
 
 
