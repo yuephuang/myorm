@@ -35,6 +35,28 @@ class User(db.Model):
 class Encourage(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(255))
+    author = db.Column(db.String(255))
+    message = db.Column(db.String(255))
+    create_datetime = db.Column(db.DateTime, default=datetime.utcnow)
+    update_datetime = db.Column(db.DateTime, default=datetime.utcnow)
+    score = db.Column(db.String(255))
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
+
+
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    sender_id = db.Column(db.Integer)
+    receive_id = db.Column(db.Integer)
+    sender_type = db.Column(db.Integer)
+    receive_type = db.Column(db.Integer)
+    msg_type = db.Column(db.Integer)
+    msg_status = db.Column(db.Integer)
+    content = db.Column(db.String(255))
+    timestamp = db.Column(db.Integer)
+    sender_datetime = db.Column(db.DateTime, default=datetime.utcnow)
+    receive_datetime = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
